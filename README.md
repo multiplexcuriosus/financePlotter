@@ -16,13 +16,20 @@ You can also specify terms which should be ignored generally or in certain month
 To adapt this code to you, you need to do the following things:
 
 0.) In the __init__ method in month.py there are the following two lines:
-filename = "<bank>_" + str(year) + "_" + str(number) + ".csv"
+
+    filename = "<bank>_" + str(year) + "_" + str(number) + ".csv"
+
 --> Obviously, you have to bring the names of your target files into this format
-self._data = pd.read_csv(filename, sep=';')
+    
+    self._data = pd.read_csv(filename, sep=';')
+
 --> if your csv file has another seperator than ';', you have to specifiy that in the line above
 
 1.) Fill the dict 'allLocations' in the cfg.py with your target topics and keywords for that topic. 
-An example: self.alLLocations["food"] = {'Burger King', 'KFC', 'Peking garden'} 
+An example: 
+
+    self.alLLocations["food"] = {'Burger King', 'KFC', 'Peking garden'} 
+
 When the program now parses each line of the csv file it will search for these keywords and remember 
 how much you spent on eating at these places (1)
 

@@ -46,7 +46,7 @@ in your csv file:
 Also,fill the list 'topicsComplete' in the cfg.py file with all topics from 'topics' + 'unclassified' + 
 all names of your static topics (see 4.))
 
-4.) In the method 'addStatic' in cfg.py add dictionaries or just values of constant monthly expenses analogously to the example.
+4.) In the method 'addStatic' in cfg.py add dictionaries or just values of constant monthly expenses analogously to the example (given in cfg.py)
 
 5.) In the method 'initSpecExcept' in cfg.py add exceptions to the year and month the exception to be ignored happend.
 Example:

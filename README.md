@@ -4,7 +4,10 @@ Tool to analyze banking data in csv format and to plot the results
 
 This code can be used to analyze csv files containing money flows from a bank account.
 Month objects can be instantiated with their respective year and index in the year (1-12).
-Example: Jan = Month(2021,1) #create month object
+Example: 
+
+    Jan = Month(2021,1) #create month object
+
 The init method of the month object analyzes the csv file of that month.
 A big part of this analysis is extracting how much money was spent on a certain topic, such as food or taxes.
 These topics can and must be specified in the cfg file for this code to work.
@@ -25,9 +28,12 @@ how much you spent on eating at these places (1)
 
 2.) In month.py you need to replace all occurrences of some words with their corresponding term
 in your csv file:
-"Buchungstext" <-- <Column name of the description of the expense>
-"Belastung CHF" <-- <Column name of the value of the expense>
-"Gutschrift CHF" <-- <Column name of the value of the credit>
+
+"Buchungstext" <-- Column name of the description of the expense
+
+"Belastung CHF" <-- Column name of the value of the expense
+
+"Gutschrift CHF" <-- Column name of the value of the credit
 
 3.) Fill the list 'topics' in the cfg.py file with the topics you want to analyze. See 1.) for an example. 
 Also,fill the list 'topicsComplete' in the cfg.py file with all topics from 'topics' + 'unclassified' + 
@@ -37,10 +43,12 @@ all names of your static topics (see 4.))
 
 5.) In the method 'initSpecExcept' in cfg.py add exceptions to the year and month the exception to be ignored happend.
 Example:
-if year == 2022:
-    self.specificExceptions[3] = {'Failed transaction'}
-elif year == 2021:
-    self.specificExceptions[6] = {'account transfer'}
+                     
+    if year == 2022:
+        self.specificExceptions[3] = {'Failed transaction'}
+    elif year == 2021:
+        self.specificExceptions[6] = {'account transfer'}
+                     
 With these parameters, the withdrawals in march and june of their respective years with these
 key words are ignored for the analysis
 

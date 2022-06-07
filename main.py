@@ -66,9 +66,9 @@ to get a dataframe containing all entries about topicY in your month object monX
 
 months = []
 for i in range(5, 13):
-    months.append(Month(2021, i))
+    months.append(Month(2015, i))
 for i in range(1, 6):
-    months.append(Month(2022, i))
+    months.append(Month(2016, i))
 
 # create selection and plot things
 sel = Selection(months)

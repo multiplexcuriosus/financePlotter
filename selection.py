@@ -12,7 +12,7 @@ from cfg import CFG
 
 class Selection:
     def __init__(self, _months):
-        self._cfg = CFG(2022)
+        self._cfg = CFG(2015)
         self._months = _months
         self._topics = self._cfg.topicsComplete
         self._averages = {}

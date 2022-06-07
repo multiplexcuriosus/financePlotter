@@ -17,20 +17,25 @@ filename = "<bank>_" + str(year) + "_" + str(number) + ".csv"
 --> Obviously, you have to bring the names of your target files into this format
 self._data = pd.read_csv(filename, sep=';')
 --> if your csv file has another seperator than ';', you have to specifiy that in the line above
-1.) Fill the dict 'allLocations' in the cfg.py with your target topics and keywords for that topic. 
+
+    1.) Fill the dict 'allLocations' in the cfg.py with your target topics and keywords for that topic. 
 An example: self.alLLocations["food"] = {'Burger King', 'KFC', 'Peking garden'} 
 When the program now parses each line of the csv file it will search for these keywords and remember 
 how much you spent on eating at these places (1)
-2.) In month.py you need to replace all occurrences of some words with their corresponding term
+
+    2.) In month.py you need to replace all occurrences of some words with their corresponding term
 in your csv file:
 "Buchungstext" <-- <Column name of the description of the expense>
 "Belastung CHF" <-- <Column name of the value of the expense>
 "Gutschrift CHF" <-- <Column name of the value of the credit>
-3.) Fill the list 'topics' in the cfg.py file with the topics you want to analyze. See 1.) for an example. 
+
+    3.) Fill the list 'topics' in the cfg.py file with the topics you want to analyze. See 1.) for an example. 
 Also,fill the list 'topicsComplete' in the cfg.py file with all topics from 'topics' + 'unclassified' + 
 all names of your static topics (see 4.))
-4.) In the method 'addStatic' in cfg.py add dictionaries or just values of constant monthly expenses analogously to the example.
-5.) In the method 'initSpecExcept' in cfg.py add exceptions to the year and month the exception to be ignored happend.
+
+    4.) In the method 'addStatic' in cfg.py add dictionaries or just values of constant monthly expenses analogously to the example.
+
+    5.) In the method 'initSpecExcept' in cfg.py add exceptions to the year and month the exception to be ignored happend.
 Example:
 if year == 2022:
     self.specificExceptions[3] = {'Failed transaction'}
@@ -38,12 +43,15 @@ elif year == 2021:
     self.specificExceptions[6] = {'account transfer'}
 With these parameters, the withdrawals in march and june of their respective years with these
 key words are ignored for the analysis
-6.) Fill the list 'generalExceptions' in cfg.py with keywords you want to be always ignored
-7.) For the plot 'plot15months' in selection.py, the plot can be configured to use
+
+    6.) Fill the list 'generalExceptions' in cfg.py with keywords you want to be always ignored
+
+    7.) For the plot 'plot15months' in selection.py, the plot can be configured to use
 abbreviations of the topics names to make the plot prettier. If you want to use that,
 you need to define an abbreviation for each topic name in topicComplete. This you must do in the 
 dict 'topicsCompleteAbbrv' in cfg.py. To use it, you also must set the bool 'abbrv' to true in 'plot15months'
-8.) If you want to color the individual bars of the bar plot accoding to certain criteria,
+
+    8.) If you want to color the individual bars of the bar plot accoding to certain criteria,
 you can edit the dict 'howFix' in cfg.py. In 'howFix' you can specify which topics has what criterion index
 and in the dict 'colDict' in selection.py you can set which criterion index corresponds to what color
 

@@ -35,13 +35,14 @@ class Month:
     # If you want to save the topic specific extactedData in the member variable _extractedData["Topic"]
     # set loadData = true
     def getTopic(self, topic, monthData, idxToDrop):
-        loadData = False
+        loadData = True
         itemLocs = self._allLocs[topic]
         val = 0
         exData = pd.DataFrame()
         for _item in itemLocs:
             tempData = monthData.loc[
-                monthData['Buchungstext'].str.contains(_item, na=False), ['Buchungstext', 'Belastung CHF']]
+                monthData['Buchungstext'].str.contains(rf'\b{re.escape(_item)}\b', na=False, case=False, regex=True)
+]
             if loadData:
                 exData = pd.concat([exData, tempData]) #execute to have all meta data in each month as attribute in dict
             val += tempData['Belastung CHF'].sum()
@@ -49,6 +50,7 @@ class Month:
             for tidx in tempIdx:
                 idxToDrop.append(tidx)
             del tempData
+        exData = exData.drop_duplicates()
         self._extractedData[topic] = exData
         del exData
         self._Res[topic] = val
